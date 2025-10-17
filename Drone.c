@@ -36,7 +36,7 @@ void CarregarDrone(TDrone *drone1, TGalpao *galpao1){
 }
 
 // Realiza as entregas calculado a distancia total da rota //
-void Entregas(TDrone *drone1){
+void Entregas(TDrone *drone1, FILE* arquivo2){
     int atual = 0, total = 0; //Criação de váriaveis auxiliares para a distância//
     while(drone1 -> ListaPacotes ->pPrimeiro != NULL){
         if(atual == 0){
@@ -58,6 +58,7 @@ void Entregas(TDrone *drone1){
         LRetira(drone1 -> ListaPacotes); // Retira o pacote entregue do inventário do drone //
     }
     drone1 -> DistanciaTotal = total + atual;
+    fprintf(arquivo2, "Distancia Total: %d\n\n", drone1 -> DistanciaTotal);
     // Soma a distância já percorrida com a distância para voltar ao galpão//
 }
 // Imprime o numero da viagem, as entregas e a distância percorrida naquele carregamento //
@@ -67,6 +68,8 @@ void Imprimir(TDrone *drone1, int i,FILE* arquivo2){ // recebe "i" para auxiliar
         fprintf(arquivo2, "Entrega: \"%s\" para \"%s\"\n", getNomeProduto(&drone1->ListaPacotes->pPrimeiro->Item), getNomeDestino(&drone1->ListaPacotes->pPrimeiro->Item));
         drone1->ListaPacotes->pPrimeiro=drone1->ListaPacotes->pPrimeiro->pProx;
     }
-    fprintf(arquivo2, "Distancia Total: %d\n", drone1 -> DistanciaTotal);
-    fprintf(arquivo2, "\n");
+}
+
+ProblemaCarregamento(TDrone *drone, TGalpao* galpao, int n){
+
 }
