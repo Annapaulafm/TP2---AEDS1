@@ -1,5 +1,5 @@
 #include "Galpao.h"
-#include "ListaPacote.h"
+#include "../ListaPacote/ListaPacote.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,11 +8,6 @@
 TGalpao* InicializaGalpao()
 {
     TGalpao* Galpao1 = (TGalpao*)malloc(sizeof(TGalpao));
-    if(Galpao1 == NULL){
-        printf("Erro na alocação da função malloc");
-        system("pause");
-        exit(1);
-    }
     Galpao1 -> ListaGalpao = NULL;
     return Galpao1;
 }
