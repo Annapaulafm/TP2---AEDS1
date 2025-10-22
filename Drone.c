@@ -2,11 +2,6 @@
 // Inicializa o Drone //
 TDrone* InicializarDrone(int PesoMaximo){
     TDrone* drone1 = (TDrone*)malloc(sizeof(TDrone));
-    if(drone1 == NULL){
-        printf("Erro na alocação da função malloc");
-        system("pause");
-        exit(1);
-    }
     drone1 -> PesoCarregado = 0; // o drone começa descarregado //
     drone1 -> DistanciaTotal = 0;
     drone1 -> PesoMaximo = PesoMaximo;
@@ -14,7 +9,7 @@ TDrone* InicializarDrone(int PesoMaximo){
     return drone1;
 }
 
-// Careega o drone com o máximo de pacotes possível //
+// Carrega o drone com o máximo de pacotes possível //
 void CarregarDrone(TDrone *drone1, TGalpao *galpao1){
     while(galpao1->ListaGalpao->pPrimeiro != NULL && (drone1 -> PesoCarregado + galpao1 -> ListaGalpao -> pPrimeiro -> Item.PesoProduto) <= drone1 -> PesoMaximo){
         TCelula* aux;
@@ -36,9 +31,11 @@ void CarregarDrone(TDrone *drone1, TGalpao *galpao1){
 }
 
 // Realiza as entregas calculado a distancia total da rota //
-void Entregas(TDrone *drone1, FILE* arquivo2){
+void Entregas(TDrone *drone1, int i, FILE* arquivo2){
     int atual = 0, total = 0; //Criação de váriaveis auxiliares para a distância//
+    fprintf(arquivo2, "Viagem %d\n", i);
     while(drone1 -> ListaPacotes ->pPrimeiro != NULL){
+        fprintf(arquivo2, "Entrega: \"%s\" para \"%s\"\n", getNomeProduto(&drone1->ListaPacotes->pPrimeiro->Item), getNomeDestino(&drone1->ListaPacotes->pPrimeiro->Item));
         if(atual == 0){
             atual = drone1 -> ListaPacotes -> pPrimeiro -> Item.DistanciaDestino;
             total += drone1 -> ListaPacotes -> pPrimeiro -> Item.DistanciaDestino;
@@ -68,8 +65,4 @@ void Imprimir(TDrone *drone1, int i,FILE* arquivo2){ // recebe "i" para auxiliar
         fprintf(arquivo2, "Entrega: \"%s\" para \"%s\"\n", getNomeProduto(&drone1->ListaPacotes->pPrimeiro->Item), getNomeDestino(&drone1->ListaPacotes->pPrimeiro->Item));
         drone1->ListaPacotes->pPrimeiro=drone1->ListaPacotes->pPrimeiro->pProx;
     }
-}
-
-ProblemaCarregamento(TDrone *drone, TGalpao* galpao, int n){
-
 }
