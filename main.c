@@ -2,6 +2,7 @@
 #include "Galpao/Galpao.c"
 #include "Listapacote/ListaPacote.c"
 #include "Pacote/Pacote.c"
+#include <time.h>
 
 int main(){
     printf("Digite a entrada arquivo ou digitar:\n");
@@ -81,16 +82,21 @@ int main(){
 
     // ● "Coleta de Pacotes" -> "Calcular Distância" -> "Imprimir Entregas" ● //
     int i=1, a=0;
+    clock_t tempo_inicio, tempo_final;
+
+    tempo_inicio = clock(); // Começa a marcar o tempo de ínicio da função "chave" do código //
     while(galpao1->ListaGalpao->pPrimeiro!=NULL){
         CarregarDrone(drone1, galpao1); // CARREGA O DRONE COM O MÁXIMO DE PACOTES POSSÍVEL //
         a+=drone1->DistanciaTotal; // VARIAVEL A ARMAZENA A DISTANCIA TODAS DE TODAS AS ENTREGAS //
         Entregas(drone1, i, arquivo2); // FAZ AS ENTREGAS E ARMAZENA A DISTANCIA PERCORRIDA NAQUELA ENTREGA //      
         i++;
     }
+    tempo_final = clock();
+    double tempo_total = (double)(tempo_final - tempo_inicio) / CLOCKS_PER_SEC; // Para de medir o tempo e nos dá o tempo da rodagem do programa //
 
     a+=drone1->DistanciaTotal; // ADICIONA NA VARIAVEL A DISTANCIA DA ULTIMA ENTREGA FEITA //
     fprintf(arquivo2,"Total de Quilômetros Percorridos no Dia: %dKM.", a); // IMPRIME A DISTANCIA TOTAL PERCORRIDA DO DIA //
-
+    fprintf(arquivo2, "Tempo total de execucao: %.4f segundos\n", tempo_total);
 
     fclose (arquivo2); // FECHA O ARQUIVO DE SAIDA //
     system("pause");
