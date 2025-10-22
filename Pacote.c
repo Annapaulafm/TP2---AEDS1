@@ -3,11 +3,6 @@
 // Inicialização do Pacote //
 TPacote* InicializarPacote(char *NomeProduto, char *NomeDestino, int PesoProduto, int DistanciaDestino){
     TPacote* Pacote1 = (TPacote*)malloc(sizeof(TPacote));
-    if(Pacote1 == NULL){
-        printf("Erro na alocação da função malloc");
-        system("pause");
-        exit(1);
-    }
     strcpy(Pacote1 -> NomeProduto, NomeProduto);
     strcpy(Pacote1 -> NomeDestino, NomeDestino);
     Pacote1 -> PesoProduto = PesoProduto;
@@ -28,6 +23,9 @@ void setPesoProduto(TPacote *pacote, int PesoProduto){
 void setDistanciaDestino(TPacote *pacote, int DistanciaDestino){
     pacote -> DistanciaDestino = DistanciaDestino;
 }
+void setPrioridade(TPacote *pacote, int prioridade){
+    pacote -> Prioridade = prioridade;
+}
 
 // Operações get do Pacote //
 char* getNomeProduto(TPacote *pacote){
@@ -41,4 +39,7 @@ int getPesoProduto(TPacote *pacote){
 }
 int getDistanciaDestino(TPacote *pacote){
     return pacote -> DistanciaDestino;
+}
+int getPrioridade(TPacote *pacote){
+    return pacote -> Prioridade;
 }
