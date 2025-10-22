@@ -11,6 +11,7 @@ typedef struct pacote
     char NomeDestino[100];
     int PesoProduto;
     int DistanciaDestino;
+    int Prioridade;
 } TPacote;
 
 // Inicialização do Pacote //
@@ -21,11 +22,13 @@ void setNomeProduto(TPacote *pacote, char *NomeProduto);
 void setNomeDestino(TPacote *pacote, char *NomeDestino);
 void setPesoProduto(TPacote *pacote, int PesoProduto);
 void setDistanciaDestino(TPacote *pacote, int DistanciaDestino);
+void setPrioridade(TPacote *pacote, int prioridade);
 
 // Operações de get do Pacote //
 char* getNomeProduto(TPacote *pacote);
 char* getNomeDestino(TPacote *pacote);
 int getPesoProduto(TPacote *pacote);
 int getDistanciaDestino(TPacote *pacote);
+int getPrioridade(TPacote *pacote);
 
 #endif
