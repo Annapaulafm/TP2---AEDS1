@@ -1,6 +1,6 @@
 #ifndef Galpao
 #define Galpao
-#include "ListaPacote.h"
+#include "../ListaPacote/ListaPacote.h"
 
 //TAD GALPÃO
 typedef struct{
