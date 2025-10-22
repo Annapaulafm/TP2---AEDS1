@@ -1,6 +1,6 @@
 #ifndef ListaPacote // evita que um mesmo arquivo do .h seja incluido várias vezes //
 #define ListaPacote
-#include "Pacote.h"
+#include "../Pacote/Pacote.h"
 
 // Lista pacotes //
 typedef struct Celula* Apontador;
