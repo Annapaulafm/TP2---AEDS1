@@ -8,11 +8,6 @@ void FLVazia(TLista *pLista){
 
 TLista* InicializaLista(){
     TLista* pLista = (TLista*)malloc(sizeof(TLista));
-    if(pLista == NULL){
-        printf("Erro na alocação da função malloc");
-        system("pause");
-        exit(1);
-    }
     pLista->pPrimeiro = NULL;
     pLista->pUltimo = NULL;
     return pLista;
